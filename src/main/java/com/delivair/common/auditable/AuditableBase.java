@@ -31,6 +31,6 @@ public class AuditableBase {
     @LastModifiedDate
     @Column(name="updated_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private String updatedDate;
+    private Date updatedDate;
 
 }
