@@ -19,7 +19,8 @@ public class PaymentController {
     public List<Payment> getAllPayment(){
         return paymentRepository.findAll();
     }
-    
+
+    //payment
     @PostMapping("/payment")
     public Payment createPayment(@RequestBody Payment payment){
         return paymentRepository.save(payment);
