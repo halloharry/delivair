@@ -7,12 +7,11 @@ import com.delivair.model.Product;
 
 public interface CartService {
 
-
     BaseResponse addProductToCart(Cart cart);
 
-    BaseResponse removeProductFromCart(Cart cart);
-
-    void checkout() throws NotEnoughProductInStockException;
-
-    BaseResponse getDataFromCart();
+//    BaseResponse removeProductFromCart(Cart cart);
+//
+//    void checkout() throws NotEnoughProductInStockException;
+//
+//    BaseResponse getDataFromCart();
 }
