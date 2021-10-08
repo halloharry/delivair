@@ -3,7 +3,6 @@ package com.delivair.common.payload.response;
 import com.delivair.common.constant.CommonMessage;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
 
 @Data
