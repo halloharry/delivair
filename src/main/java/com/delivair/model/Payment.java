@@ -1,16 +1,10 @@
 package com.delivair.model;
 
 import com.delivair.common.auditable.ModelBase;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "payment")
-@Setter
-@Getter
 public class Payment extends ModelBase {
 
     @ManyToOne
@@ -28,6 +22,39 @@ public class Payment extends ModelBase {
 
 //    @Column(name = "fk_order")
 //    private int fkOrder;
+    public Payment(){
 
+    }
 
+    public PaymentType getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(PaymentType paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public Long getTotalPayment() {
+        return totalPayment;
+    }
+
+    public void setTotalPayment(Long totalPayment) {
+        this.totalPayment = totalPayment;
+    }
+
+    public String getNoResi() {
+        return noResi;
+    }
+
+    public void setNoResi(String noResi) {
+        this.noResi = noResi;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

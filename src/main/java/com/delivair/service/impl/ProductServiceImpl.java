@@ -15,7 +15,8 @@ public class ProductServiceImpl implements ProductService {
     ProductRepository productRepository;
 
     @Override
-    public BaseResponse getAllProduct() { return new BaseResponse(CommonMessage.FOUND); }
+    public BaseResponse getAllProduct() {
+        return new BaseResponse(CommonMessage.FOUND); }
 
     @Override
     public BaseResponse addProduct(Product product) {
