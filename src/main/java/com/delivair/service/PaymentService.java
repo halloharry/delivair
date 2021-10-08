@@ -5,7 +5,7 @@ import com.delivair.model.Payment;
 
 public interface PaymentService {
 
-    BaseResponse getAllPayment();
+    BaseResponse getAllPayment(Payment payment);
 
     BaseResponse addPayment(Payment payment);
 }
