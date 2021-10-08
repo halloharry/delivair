@@ -15,8 +15,14 @@ public class PaymentServiceImpl implements PaymentService {
     PaymentRepository paymentRepository;
 
     @Override
-    public BaseResponse getAllPayment() {
-        return new BaseResponse(CommonMessage.SAVED);
+    public BaseResponse getAllPayment(Payment payment) {
+        try {
+//            paymentRepository.findAll();
+            return new BaseResponse(CommonMessage.FOUND, paymentRepository.findAll());
+        } catch (Exception e){
+            System.out.println(e);
+            return new BaseResponse(CommonMessage.NOT_FOUND);
+        }
     }
 
     @Override
