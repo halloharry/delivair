@@ -1,13 +1,12 @@
-package com.delivair.module.user.controller;
+package com.delivair.module.product.controller;
 
 
 import com.delivair.common.payload.response.BaseResponse;
-import com.delivair.model.Product;
+import com.delivair.module.product.payload.request.ProductRequest;
 import com.delivair.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -23,9 +22,12 @@ public class ProductController {
     }
 
     @PostMapping("/add-product")
-    public BaseResponse addProduct(@RequestBody Product product){
-        System.out.println(product);
-        return productService.addProduct(product);
+    public BaseResponse addProduct(@RequestBody ProductRequest productRequest){
+        System.out.println(productRequest);
+        return productService.addProduct(productRequest);
     }
+
+
+
 
 }

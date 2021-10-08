@@ -32,7 +32,7 @@ public class Product extends ModelBase {
     private String image;
 
     @Column(name = "is_ready")
-    private boolean is_ready;
+    private boolean isReady;
 
     @ManyToOne
     @JoinColumn(name = "fk_product_category_id")
@@ -106,12 +106,12 @@ public class Product extends ModelBase {
         this.image = image;
     }
 
-    public boolean isIs_ready() {
-        return is_ready;
+    public boolean isReady() {
+        return isReady;
     }
 
-    public void setIs_ready(boolean is_ready) {
-        this.is_ready = is_ready;
+    public void setReady(boolean ready) {
+        isReady = ready;
     }
 
     public ProductCategory getProductCategory() {
