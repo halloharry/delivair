@@ -17,8 +17,8 @@ public class PaymentController {
 
     // get all payment
     @GetMapping("/all-payment")
-    public BaseResponse getAllPayment(){
-        return paymentService.getAllPayment();
+    public BaseResponse getAllPayment(Payment payment){
+        return paymentService.getAllPayment(payment);
     }
 
     //payment
