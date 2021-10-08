@@ -15,6 +15,9 @@ import java.util.List;
 @Setter
 public class Cart extends ModelBase {
 
+    @Column(name = "product_ID")
+    private  int productId;
+
     @Column(name = "order_id")
     private int orderID;
 
@@ -26,6 +29,8 @@ public class Cart extends ModelBase {
 
     @Column(name = "amount")
     private int amount;
+
+
 
 
 }

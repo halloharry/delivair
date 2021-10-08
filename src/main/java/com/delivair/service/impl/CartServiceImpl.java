@@ -28,8 +28,15 @@ public class CartServiceImpl implements CartService {
         }
     }
 
-
-
+    @Override
+    public BaseResponse delete(long productId) {
+        try { cartRepository.deleteById(productId);
+            return new BaseResponse(CommonMessage.DELETED);
+        } catch (Exception e){
+            System.out.println(e);
+            return new BaseResponse(CommonMessage.NOT_DELETED);
+        }
+    }
 
 
 }

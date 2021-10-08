@@ -22,6 +22,12 @@ public class CartController {
     }
 
     //Remove Product from Cart
+    @DeleteMapping("/removeFromCart/{productId}")
+    public BaseResponse deleteProduct(@PathVariable("productId") long productId)
+    {
+        System.out.println(productId);
+       return cartService.delete(productId);
+    }
 
 
     //CheckOut

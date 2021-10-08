@@ -9,7 +9,8 @@ public interface CartService {
 
     BaseResponse addProductToCart(Cart cart);
 
-//    BaseResponse removeProductFromCart(Cart cart);
+    BaseResponse delete(long productId);
+
 //
 //    void checkout() throws NotEnoughProductInStockException;
 //
