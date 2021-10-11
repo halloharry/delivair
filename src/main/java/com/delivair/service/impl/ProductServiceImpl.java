@@ -23,6 +23,10 @@ public class ProductServiceImpl implements ProductService {
     ProductRepository productRepository;
 
     @Override
+<<<<<<< HEAD
+    public BaseResponse getAllProduct() {
+        return new BaseResponse(CommonMessage.FOUND); }
+=======
     public BaseResponse addProduct(ProductRequest productRequest) {
         try {
             Product product = MapperUtil.parse(productRequest, Product.class, MatchingStrategies.STRICT);
@@ -35,6 +39,7 @@ public class ProductServiceImpl implements ProductService {
             return new BaseResponse(CommonMessage.NOT_SAVED);
         }
     }
+>>>>>>> 5eb3b22321260f7f7e28e304d66b751a6bf8b6bd
 
     @Override
     public BaseResponse getAllProduct() {
