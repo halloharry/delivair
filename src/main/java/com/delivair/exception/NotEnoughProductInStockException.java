@@ -1,7 +1,7 @@
 package com.delivair.exception;
 
-import com.delivair.model.Product;
 
+import com.delivair.model.Product;
 
 public class NotEnoughProductInStockException extends Exception {
 
