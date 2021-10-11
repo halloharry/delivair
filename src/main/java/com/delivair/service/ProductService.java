@@ -2,6 +2,7 @@ package com.delivair.service;
 
 
 import com.delivair.common.payload.response.BaseResponse;
+import com.delivair.module.product.payload.request.EditProductRequest;
 import com.delivair.module.product.payload.request.ProductRequest;
 
 public interface ProductService {
@@ -11,6 +12,8 @@ public interface ProductService {
     BaseResponse getAllProduct();
 
     BaseResponse deleteProduct (Long id);
+
+    BaseResponse updateProduct (EditProductRequest editProductRequest, Long id);
 
 
 }

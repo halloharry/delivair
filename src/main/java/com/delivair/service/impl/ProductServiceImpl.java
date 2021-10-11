@@ -4,6 +4,7 @@ import com.delivair.common.constant.CommonMessage;
 import com.delivair.common.payload.response.BaseResponse;
 import com.delivair.common.util.MapperUtil;
 import com.delivair.model.Product;
+import com.delivair.module.product.payload.request.EditProductRequest;
 import com.delivair.module.product.payload.request.ProductRequest;
 import com.delivair.module.product.payload.response.ProductListResponse;
 import com.delivair.module.product.payload.response.ProductResponse;
@@ -39,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public BaseResponse getAllProduct() {
         try {
-            List<Product> products = productRepository.findAll();
+            List<Product> products = productRepository.findByIsDeleted(0);
             ProductListResponse productListResponse = new ProductListResponse();
 
             products.forEach(temp -> {
@@ -56,12 +57,30 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public BaseResponse deleteProduct(Long id){
-        try { productRepository.deleteById(id);
+        try {
+            Product product = productRepository.findById(id).get();
+            product.setIsDeleted(1);
+
+            productRepository.save(product);
           return new BaseResponse(CommonMessage.DELETED, null);
 
         } catch (Exception e){
             System.out.println(e);
             return new BaseResponse(CommonMessage.NOT_SAVED);
+        }
+    }
+
+    @Override
+    public BaseResponse updateProduct(EditProductRequest editProductRequest, Long id){
+        try {
+            Product product = productRepository.findById(id).get();
+            product.setName(editProductRequest.getName());
+            productRepository.save(product);
+            return new BaseResponse(CommonMessage.UPDATED, product);
+
+        } catch (Exception e){
+            System.out.println(e);
+            return new BaseResponse(CommonMessage.NOT_UPDATED);
         }
     }
 
