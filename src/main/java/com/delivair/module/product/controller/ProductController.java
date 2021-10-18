@@ -8,9 +8,12 @@ import com.delivair.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.InvocationTargetException;
+import java.text.ParseException;
+
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
@@ -35,7 +38,7 @@ public class ProductController {
     }
     
     @PostMapping("/update/{id}")
-    public BaseResponse updateProduct(@PathVariable("id") Long id, @RequestBody EditProductRequest editProductRequest) {
+    public BaseResponse updateProduct(@PathVariable("id") Long id, @RequestBody EditProductRequest editProductRequest) throws ParseException, InvocationTargetException, IllegalAccessException {
         System.out.println(editProductRequest);
         return productService.updateProduct(editProductRequest, id);
     }
