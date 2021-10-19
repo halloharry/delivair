@@ -47,8 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/login",
                         "/auth/welcome",
                         "/auth/register",
-                        "/auth/forgot-password",
-                        "/auth/logout/**",
+                        "/auth/forgot-password/**",
                         "/auth/reset-password/**").permitAll()
                 .anyRequest().authenticated()
                 .and().exceptionHandling()

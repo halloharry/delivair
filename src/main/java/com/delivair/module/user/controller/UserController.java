@@ -7,6 +7,7 @@ import com.delivair.model.User;
 import com.delivair.module.user.payload.request.AuthRequest;
 import com.delivair.module.user.payload.response.AuthResponse;
 import com.delivair.repository.UserRepository;
+import com.delivair.service.UserService;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 @RestController
@@ -23,6 +25,9 @@ public class UserController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -73,4 +78,21 @@ public class UserController {
         }
         return new BaseResponse(CommonMessage.OK, user.getUsername());
     }
+
+    @PostMapping("/forgot-password")
+    public String forgotPassword(@RequestParam String username) throws IOException {
+
+        String response = userService.forgotPassword(username);
+
+        if (!response.startsWith("Invalid")) {
+            response = "http://localhost:8080/auth/reset-password?token=" + response;
+        }
+        return response;
+    }
+
+    @PutMapping("/reset-password")
+    public String resetPassword(@RequestParam String token, @RequestParam String password) throws IOException {
+        return userService.resetPassword(token, password);
+    }
+
 }

@@ -6,5 +6,6 @@ public interface UserService {
 
     String forgotPassword(String username)throws IOException;
 
+    String resetPassword(String token, String password) throws IOException;
 
 }
