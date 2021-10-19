@@ -1,15 +1,11 @@
 package com.delivair.module.productCategory.controller;
 
 import com.delivair.common.payload.response.BaseResponse;
-import com.delivair.module.product.payload.request.EditProductRequest;
 import com.delivair.module.productCategory.payload.request.EditProductCategoryRequest;
 import com.delivair.module.productCategory.payload.request.ProductCategoryRequest;
 import com.delivair.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.lang.reflect.InvocationTargetException;
-import java.text.ParseException;
 
 @RestController
 @RequestMapping ("/category")
@@ -35,7 +31,7 @@ public class ProductCategoryController {
     }
 
     @PostMapping("/update/{id}")
-    public BaseResponse updateProduct(@PathVariable("id") Long id, @RequestBody EditProductCategoryRequest editProductCategoryRequest) throws Exception {
+    public BaseResponse updateCategory(@PathVariable("id") Long id, @RequestBody EditProductCategoryRequest editProductCategoryRequest) throws Exception {
         System.out.println(editProductCategoryRequest);
         return productCategoryService.updateCategory(editProductCategoryRequest, id);
     }
