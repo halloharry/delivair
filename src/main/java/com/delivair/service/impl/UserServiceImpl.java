@@ -20,56 +20,34 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
-
-
-
-
     public String forgotPassword(String username) throws IOException {
 
-//		Optional<User> userOptional = Optional
-//				.ofNullable(myBatisService.findByEmail(email));
         User user = userRepository.findByUsername(username);
         System.out.println(user.getUsername());
-//		System.out.println(userOptional.get().getEmail());
-//		System.out.println(userOptional.get().getPassword());
-//		System.out.println(userOptional.get().getUsername());
-//		System.out.println(userOptional.get().getId());
 
-//		if (!userOptional.isPresent()) {
-//			return "Invalid email id.";
-//		}
         if (user.getUsername().equals(null)) {
             return "Invalid email id.";
         }
 
-//		User user = userOptional.get();
-//        user.setToken(generateToken());
-//        user.setTokenCreationDate(LocalDateTime.now().toString());
-
         userRepository.save(user);
-
         return user.getUsername();
     }
 
-//    public String resetPassword(String token, String password) throws IOException {
-//
-//        Optional<User> userOptional = Optional
-//                .ofNullable(myBatisService.findByToken(token));
-//
-//        if (!userOptional.isPresent()) {
-//            return "Invalid token.";
-//        }
-//
-//        User user = userOptional.get();
-//
-//        user.setPassword(password);
-//        user.setToken(null);
-//        user.setTokenCreationDate(null);
-//
-//        myBatisService.updatePassword(user);
-//
-//        return "Your password successfully updated.";
-//    }
+    public String resetPassword(String token, String password) throws IOException {
+
+        Optional<User> userOptional = Optional
+                .ofNullable(userRepository.findByUsername(token));
+
+        if (!userOptional.isPresent()) {
+            return "Invalid token.";
+        }
+
+        User user = userOptional.get();
+        user.setPassword(password);
+        userRepository.save(user);
+
+        return "Your password successfully updated.";
+    }
 
     /**
      * Generate unique token. You may add multiple parameters to create a strong
