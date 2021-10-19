@@ -1,5 +1,6 @@
 package com.delivair.module.product.payload.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
@@ -15,6 +16,10 @@ public class ProductRequest {
     private String image;
     private String isReady;
     private String isDeleted;
-    private String productCategory;
-    private String productType;
+
+    @JsonProperty(value = "product_category_id")
+    private Long productCategoryId;
+
+    @JsonProperty(value = "product_type_id")
+    private Long productTypeId;
 }

@@ -14,7 +14,7 @@ public class ProductResponse {
     private String price;
     private String image;
     private String isReady;
-    private String isDeleted;
+//    private String isDeleted;
     private String productCategory;
     private String productType;
 

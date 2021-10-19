@@ -41,7 +41,8 @@ public class ProductServiceImpl implements ProductService {
             Product product = MapperUtil.parse(productRequest, Product.class, MatchingStrategies.STRICT);
             product.setIsDeleted(0);
             product.setIsReady(0);
-
+            ProductCategory productCategory = productCategoryRepository.findByIdAndIsDeleted(productRequest.getProductCategoryId(), 0);
+            product.setProductCategory(productCategory);
             productRepository.save(product);
             return new BaseResponse(CommonMessage.SAVED, null);
         } catch (Exception e) {
@@ -59,6 +60,8 @@ public class ProductServiceImpl implements ProductService {
             products.forEach(temp -> {
                 ProductResponse productResponse = MapperUtil.parse(temp, ProductResponse.class, MatchingStrategies.STRICT);
                 productListResponse.getProductResponses().add(productResponse);
+                productResponse.setProductCategory(temp.getProductCategory().getName());
+                productResponse.setProductType(temp.getProductType().getName());
             });
             System.out.println();
             return new BaseResponse(CommonMessage.FOUND, productListResponse);
