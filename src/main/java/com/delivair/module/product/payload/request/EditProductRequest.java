@@ -4,9 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-public class ProductRequest {
+public class EditProductRequest {
 
-    private String orderID;
     private String name;
     private String amount;
     private String brand;
